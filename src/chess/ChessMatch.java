@@ -1,12 +1,15 @@
 package src.chess;
 
 import src.board.Board;
+import src.chess.pieces.Rook;
 
 public class ChessMatch {
     private Board board;
 
     public ChessMatch() {
         board = new Board(8,8);
+
+        initialSetup();
     }
 
     public ChessPiece[][] getPieces() {
@@ -19,5 +22,13 @@ public class ChessMatch {
         }
 
         return matrix;
+    }
+
+    private void placeNewPiece(char column, int row, ChessPiece piece) {
+        board.placePiece(piece, new ChessPosition(row, column).toPosition());
+    }
+
+    public void initialSetup() {
+        placeNewPiece('b', 6, new Rook(board, Color.WHITE));
     }
 }
