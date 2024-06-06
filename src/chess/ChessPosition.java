@@ -3,8 +3,8 @@ package src.chess;
 import src.board.Position;
 
 public class ChessPosition {
-    private int row;
-    private char column;
+    private final int row;
+    private final char column;
 
     public ChessPosition(int row, char column) {
         if (row < 1 || row > 8 || column < 'a' || column > 'h') {
@@ -29,8 +29,6 @@ public class ChessPosition {
 
         return new Position(convertedRow, convertedColumn);
     }
-
-    // 3 2
 
     protected static ChessPosition fromPosition(Position position) {
         int convertedRow = 8 - position.getRow();

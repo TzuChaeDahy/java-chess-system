@@ -5,7 +5,7 @@ import src.board.Piece;
 import src.board.Position;
 
 public abstract class ChessPiece extends Piece {
-    private Color color;
+    private final Color color;
 
     public ChessPiece(Board board, Color color) {
         super(board);
