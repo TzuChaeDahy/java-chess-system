@@ -1,6 +1,7 @@
 package src.chess;
 
 import src.board.Board;
+import src.chess.pieces.King;
 import src.chess.pieces.Rook;
 
 public class ChessMatch {
@@ -30,5 +31,6 @@ public class ChessMatch {
 
     public void initialSetup() {
         placeNewPiece('b', 6, new Rook(board, Color.WHITE));
+        placeNewPiece('b', 7, new King(board, Color.BLACK));
     }
 }
