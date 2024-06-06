@@ -1,5 +1,6 @@
 package src.application;
 
+import src.chess.ChessMatch;
 import src.chess.ChessPiece;
 import src.chess.ChessPosition;
 import src.chess.Color;
@@ -12,7 +13,6 @@ public class UI {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
     public static void clearScreen() {
@@ -30,6 +30,13 @@ public class UI {
         } catch (RuntimeException e) {
             throw new InputMismatchException("Input error: input must be between a1 and h8");
         }
+    }
+
+    public static void printMatch(ChessMatch chessMatch) {
+        printBoard(chessMatch.getPieces());
+        System.out.println();
+        System.out.print("Turn: " + chessMatch.getTurn() + "\n");
+        System.out.print("Current Player: " + chessMatch.getCurrentPlayer() + "\n");
     }
 
     public static void printBoard(ChessPiece[][] pieces) {
