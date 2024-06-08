@@ -5,7 +5,6 @@ import src.chess.ChessMatch;
 import src.chess.ChessPiece;
 import src.chess.ChessPosition;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;

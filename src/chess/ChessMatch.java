@@ -5,7 +5,6 @@ import src.board.Piece;
 import src.board.Position;
 import src.chess.pieces.*;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +17,9 @@ public class ChessMatch {
     private ChessPiece promoted;
 
     private final List<Piece> piecesOnTheBoard = new ArrayList<>();
-    private final List<Piece> capturedPieces = new ArrayList<>();
 
     public ChessMatch() {
-        board = new Board(8,8);
+        board = new Board(8, 8);
         turn = 1;
         currentPlayer = Color.WHITE;
         check = false;
@@ -99,7 +97,7 @@ public class ChessMatch {
 
         check = testCheck(opponent(currentPlayer));
 
-        if(testCheckMate(opponent(currentPlayer))) {
+        if (testCheckMate(opponent(currentPlayer))) {
             checkMate = true;
         } else {
             nextTurn();
@@ -144,7 +142,6 @@ public class ChessMatch {
         if (capturedPiece != null) {
             board.placePiece(capturedPiece, target);
 
-            capturedPieces.remove(capturedPiece);
             piecesOnTheBoard.add(capturedPiece);
         }
 
@@ -179,7 +176,6 @@ public class ChessMatch {
 
         if (capturedPiece != null) {
             piecesOnTheBoard.remove(capturedPiece);
-            capturedPieces.add(capturedPiece);
         }
 
         if (sourcePiece instanceof King && target.getColumn() == source.getColumn() + 2) {
@@ -224,7 +220,7 @@ public class ChessMatch {
             throw new ChessException("Chess error: The piece selected is not from the current player");
         }
 
-        if(!board.piece(sourcePosition).isThereAnyPossibleMove()) {
+        if (!board.piece(sourcePosition).isThereAnyPossibleMove()) {
             throw new ChessException("Chess error: there are no possible moves for this piece");
         }
     }
@@ -255,7 +251,7 @@ public class ChessMatch {
 
         List<Piece> opponentPieces = piecesOnTheBoard.stream().filter(piece -> ((ChessPiece) piece).getColor() == opponent(color)).toList();
 
-        for (Piece opponentPiece: opponentPieces) {
+        for (Piece opponentPiece : opponentPieces) {
             if (opponentPiece.possibleMove(kingPosition)) {
                 return true;
             }
@@ -270,7 +266,7 @@ public class ChessMatch {
         }
 
         List<Piece> pieces = piecesOnTheBoard.stream().filter(piece -> ((ChessPiece) piece).getColor() == color).toList();
-        for (Piece piece: pieces) {
+        for (Piece piece : pieces) {
             boolean[][] matrix = piece.possibleMoves();
 
             for (int i = 0; i < matrix.length; i++) {

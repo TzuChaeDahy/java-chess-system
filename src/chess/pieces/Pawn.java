@@ -3,7 +3,6 @@ package src.chess.pieces;
 import src.board.Board;
 import src.board.Position;
 import src.chess.ChessPiece;
-import src.chess.ChessPosition;
 import src.chess.Color;
 
 public class Pawn extends ChessPiece {
